@@ -1,0 +1,16 @@
+# Postgres Inventory Low-Stock Alerts (Email)
+
+This repo creates:
+- `inventory.products` (catalog)
+- `inventory.inventory_levels` (current quantity)
+- `inventory.product_thresholds` (per-product threshold + cooldown)
+- `inventory.stock_alerts` (audit trail of alerts)
+- trigger + `pg_notify('low_stock', payload)` when quantity drops below threshold
+- Python worker that `LISTEN low_stock` and sends emails via SMTP
+
+## Run with Docker
+
+1) Copy env file
+```bash
+cp .env.example .env
+# edit .env with your SMTP settings
