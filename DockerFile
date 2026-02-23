@@ -1,0 +1,12 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+COPY pyproject.toml /app/pyproject.toml
+RUN pip install --no-cache-dir -U pip && pip install --no-cache-dir .
+
+COPY inventory_alerts /app/inventory_alerts
+COPY run.sh /app/run.sh
+RUN chmod +x /app/run.sh
+
+CMD ["/app/run.sh"]
