@@ -86,4 +86,5 @@ def update_product(product_id: int, data: dict):
         "active": result[4],
         "created_at": result[5],
         "updated_at": result[6],
-    }      
+
+    }       #P
